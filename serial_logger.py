@@ -14,10 +14,10 @@ def signal_handler(sig, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 # Open serial connection
-ser = serial.Serial('/dev/cu.usbmodem1101', 9600)  # Adjust baud rate as needed
+ser = serial.Serial('/dev/cu.usbmodem1401', 9600)  # Adjust baud rate as needed
 
 # Open CSV file for writing
-csv_file = open('data.csv', 'w', newline='')
+csv_file = open('flex.csv', 'w', newline='')
 csv_writer = csv.writer(csv_file)
 
 try:
@@ -25,7 +25,7 @@ try:
     # Read data from Arduino
         line = ser.readline().decode().strip()
         
-        # Split the line into separate values based on space delimiter
+        # Split the line into separate values based on comma delimiter
         values = line.split(",")
         
         # Write each value to a separate cell in the CSV file
